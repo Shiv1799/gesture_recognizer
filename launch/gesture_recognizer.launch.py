@@ -18,12 +18,16 @@ def generate_launch_description():
 
 
     gesture_recognizer_node = Node(
-            package='gesture_recognizer',
-            executable='gesture_recognizer_node',
-            # parameters=[params_file, {'tuning_mode': tune_detection}],
-            remappings=[('/image_in',image_topic)],
-            # condition=UnlessCondition(follow_only)
-         )
+        package='gesture_recognizer',
+        executable='gesture_recognizer_node',
+        remappings=[('/image_in', image_topic)],
+    )
+
+    camera_node = Node(
+        package='gesture_recognizer',
+        executable='usb_camera_node',
+        remappings=[('/camera/image_raw/uncompressed', image_topic)],
+    )
 
     return LaunchDescription([
         # params_file_dec,
@@ -35,6 +39,7 @@ def generate_launch_description():
         # cmd_vel_topic_dec,
         # enable_3d_tracker_dec,
         gesture_recognizer_node,
+        camera_node,
         # detect_3d_node,
-        # follow_node,    
+        # follow_node,
     ])

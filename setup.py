@@ -23,7 +23,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'gesture_recognizer_node = gesture_recognizer.gesture_recognizer_node:main'
+            'gesture_recognizer_node = gesture_recognizer.gesture_recognizer_node:main',
+            'usb_camera_node = gesture_recognizer.usb_camera_node:main',
         ],
     },
 )
